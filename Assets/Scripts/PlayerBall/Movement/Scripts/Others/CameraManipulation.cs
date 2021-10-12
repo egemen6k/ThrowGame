@@ -16,9 +16,9 @@ public class CameraManipulation : MonoBehaviour
 
     void Update()
     {
-        _fov += Time.deltaTime * _speed;
         if (_fov <= 80)
-        {
+        { 
+            _fov += Time.deltaTime * _speed;  
             _cam.fieldOfView = _fov;
         }
     }
