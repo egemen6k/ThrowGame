@@ -26,10 +26,4 @@ public class UIManager : MonoBehaviour
         GameManager.GetComponent<GameManager>().NewGame();
     }
 
-    public void NewBall()
-    {
-        GameObject GameManager = GameObject.FindGameObjectWithTag("GameManager");
-        GameManager.GetComponent<GameManager>().NewBall();
-    }
-
 }

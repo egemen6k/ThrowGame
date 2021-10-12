@@ -20,10 +20,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
-    public void NewBall()
-    {
-        _player.SetActive(false);
-        _player.SetActive(true);
-    }
 }
