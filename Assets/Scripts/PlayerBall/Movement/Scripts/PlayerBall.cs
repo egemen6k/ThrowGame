@@ -11,20 +11,21 @@ public class PlayerBall : MonoBehaviour
 
     public float releaseTime = 0.1f;
     private float maxDragDistance = 2f;
+    private float _velocityMultiplier = 13f;
 
-    private Vector3 mousePos, releasePos, firstpos, liveVelVector;
+    private Vector3 mousePos, releasePos, firstpos;
+
+    public Vector3 liveVelVector;
 
     public GameObject nextBall;
 
-    private LineRenderer _lr;
-
     public AudioClip _clip;
 
+    public bool isShot = false;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        //_lr = GetComponent<LineRenderer>();
         _rb.isKinematic = true;
         firstpos = _rb.position;
 
@@ -44,38 +45,28 @@ public class PlayerBall : MonoBehaviour
             }
         }
 
-        liveVelVector = firstpos - releasePos;
-
-        //if (_lr.positionCount > 1)
-        //{
-         //   _lr.SetPosition(1, _rb.position);
-        //}
+        liveVelVector = (firstpos - _rb.position) * _velocityMultiplier;
     }
 
     private void OnMouseDown()
     {
         _isPressed = true;
-        _rb.isKinematic = true;
-        //_lr.positionCount = 2;
-        //_lr.SetPosition(0, _rb.position);   
+        _rb.isKinematic = true; 
     }
 
     private void OnMouseUp()
     {
-        releasePos = _rb.position;
-        //_lr.enabled = false;
         _isPressed = false;
         _rb.isKinematic = false;
         AudioSource.PlayClipAtPoint(_clip, _rb.position);
-        StartCoroutine(Release(firstpos - releasePos));
+        StartCoroutine(Release(liveVelVector));
         this.enabled = false;
     }
 
     IEnumerator Release(Vector3 velocityVector)
     {
-        _rb.velocity = velocityVector * 13;
-        Debug.Log("First pos: " + firstpos);
-        Debug.Log("Release pos: " + releasePos);
+        _rb.velocity = velocityVector;
+        isShot = true;
         yield return new WaitForSeconds(4f);
 
        if (nextBall != null)
