@@ -23,6 +23,8 @@ public class PlayerBall : MonoBehaviour
 
     public bool isShot = false;
 
+    public ParticleSystem playerParticle;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -73,7 +75,8 @@ public class PlayerBall : MonoBehaviour
         {
             nextBall.SetActive(true);
         }
-
-        Destroy(this.gameObject,3f);
+        yield return new WaitForSeconds(3);
+        Instantiate(playerParticle, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }
