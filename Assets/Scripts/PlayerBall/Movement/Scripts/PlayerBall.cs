@@ -5,32 +5,32 @@ using UnityEngine;
 public class PlayerBall : MonoBehaviour
 {
     private Rigidbody _rb;
-    private bool _isPressed = false;
-    public float releaseTime = 0.15f;
     public Rigidbody Hook;
+
+    private bool _isPressed = false;
+
+    public float releaseTime = 0.1f;
     private float maxDragDistance = 2f;
+
+    private Vector3 mousePos, releasePos, firstpos, liveVelVector;
+
     public GameObject nextBall;
+
     private LineRenderer _lr;
-    private Vector3 mousePos;
+
     public AudioClip _clip;
+
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        if (_rb == null)
-        {
-            Debug.Log("Rigidbody is NULL.");
-        }
+        //_lr = GetComponent<LineRenderer>();
+        _rb.isKinematic = true;
+        firstpos = _rb.position;
 
-        _lr = GetComponent<LineRenderer>();
-        if (_lr == null)
-        {
-            Debug.Log("LR is NULL.");
-        }
     }
     private void Update()
     {
-
         if (_isPressed == true)
         {
             mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,10));
@@ -44,36 +44,38 @@ public class PlayerBall : MonoBehaviour
             }
         }
 
-        if (_lr.positionCount > 1)
-        {
-            _lr.SetPosition(1, _rb.position);
-        }
+        liveVelVector = firstpos - releasePos;
+
+        //if (_lr.positionCount > 1)
+        //{
+         //   _lr.SetPosition(1, _rb.position);
+        //}
     }
 
     private void OnMouseDown()
     {
         _isPressed = true;
         _rb.isKinematic = true;
-        _lr.positionCount = 2;
-        _lr.SetPosition(0, _rb.position);   
+        //_lr.positionCount = 2;
+        //_lr.SetPosition(0, _rb.position);   
     }
 
     private void OnMouseUp()
     {
-        _lr.enabled = false;
+        releasePos = _rb.position;
+        //_lr.enabled = false;
         _isPressed = false;
         _rb.isKinematic = false;
-        StartCoroutine(Release());
+        AudioSource.PlayClipAtPoint(_clip, _rb.position);
+        StartCoroutine(Release(firstpos - releasePos));
         this.enabled = false;
-        AudioSource.PlayClipAtPoint(_clip,_rb.position);
     }
 
-    IEnumerator Release()
+    IEnumerator Release(Vector3 velocityVector)
     {
-        yield return new WaitForSeconds(releaseTime);
-
-        GetComponent<SpringJoint>().breakForce = 0f;
-
+        _rb.velocity = velocityVector * 13;
+        Debug.Log("First pos: " + firstpos);
+        Debug.Log("Release pos: " + releasePos);
         yield return new WaitForSeconds(4f);
 
        if (nextBall != null)

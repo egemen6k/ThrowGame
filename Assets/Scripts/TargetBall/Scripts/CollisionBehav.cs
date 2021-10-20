@@ -22,22 +22,8 @@ public class CollisionBehav : MonoBehaviour, ICollision
     private void Start()
     {
         _rb = transform.GetComponent<Rigidbody>();
-        if (_rb == null)
-        {
-            Debug.Log("Rigidbody is null");
-        }
-
         _mr = GetComponent<MeshRenderer>();
-        if (_mr == null)
-        {
-            Debug.Log("MeshRenderer is null");
-        }
-
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
-        if (_uiManager == null)
-        {
-            Debug.Log("UIManager is null");
-        }
     }
     public bool onBall()
     {
