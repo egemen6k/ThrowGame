@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720643655784367443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.272, y: -1.459, z: 0}
+  m_LocalPosition: {x: 0.272, y: 1.108, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6a4c3be1332ced340a8af1f85e6d4360, type: 2}
+  - {fileID: 2100000, guid: 6a15b1f15432b6f4b9a8066e1e6ca4df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -221,11 +221,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0d4faf8d43e9540a3dfd55ac568c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mat: {fileID: 2100000, guid: fed4e78bda2b3de45954637fee164b8c, type: 2}
-  _collisionSound: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
+  _mat: {fileID: 2100000, guid: 846721efcb18b9b459ce40b282e84240, type: 2}
+  _collisionSound: {fileID: 8300000, guid: 449e20f2954ee344baaa7b2762f92220, type: 3}
   _explosionPrefab: {fileID: 7916428732476461259, guid: 25babc077e1dd724dab9bc2db8ab0f09,
     type: 3}
-  _explosionSound: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
+  _explosionSound: {fileID: 8300000, guid: d52d60a94f6f1e24482e3db9736dcaf2, type: 3}
+  _particle: {fileID: 250092852443050822, guid: 11dff29d05586d142a3284470948925f,
+    type: 3}
 --- !u!114 &-5688301905902150582
 MonoBehaviour:
   m_ObjectHideFlags: 0

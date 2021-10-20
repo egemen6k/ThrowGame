@@ -12,6 +12,8 @@ public class CollisionBehav : MonoBehaviour, ICollision
     GameObject _explosionPrefab;
     [SerializeField]
     AudioClip _explosionSound;
+    [SerializeField]
+    ParticleSystem _particle;
 
     private Rigidbody _rb;
     private MeshRenderer _mr;
@@ -59,7 +61,7 @@ public class CollisionBehav : MonoBehaviour, ICollision
 
         yield return new WaitForSeconds(5f);
 
-        Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        Instantiate(_particle, transform.position, Quaternion.identity);
         AudioSource.PlayClipAtPoint(_explosionSound, transform.position);
         Destroy(this.gameObject, 0.2f);
     }
