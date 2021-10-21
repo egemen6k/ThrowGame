@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 142358777}
   - component: {fileID: 142358776}
   - component: {fileID: 142358775}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hook: {fileID: 2036088079}
-  releaseTime: 0.1
   liveVelVector: {x: 0, y: 0, z: 0}
   nextBall: {fileID: 775825630}
   _clip: {fileID: 8300000, guid: 1c185915a8dc99b418d62e4e19230d8c, type: 3}
@@ -2822,7 +2821,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hook: {fileID: 2036088079}
-  releaseTime: 0.1
   liveVelVector: {x: 0, y: 0, z: 0}
   nextBall: {fileID: 0}
   _clip: {fileID: 8300000, guid: 1c185915a8dc99b418d62e4e19230d8c, type: 3}
@@ -5357,7 +5355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hook: {fileID: 2036088079}
-  releaseTime: 0.1
   liveVelVector: {x: 0, y: 0, z: 0}
   nextBall: {fileID: 167102386}
   _clip: {fileID: 8300000, guid: 1c185915a8dc99b418d62e4e19230d8c, type: 3}

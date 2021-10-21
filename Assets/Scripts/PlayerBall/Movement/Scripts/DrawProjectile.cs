@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class DrawProjectile : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class DrawProjectile : MonoBehaviour
             lineRenderer.enabled = false;
         }
 
-        for (float t = 0; t < numPoints; t += timeBetweenPoints)
+        for (float t = 0 ; t < numPoints * timeBetweenPoints; t += timeBetweenPoints)
         {
             Vector3 newPoint = startingPosition + t * startingVelocity;
             newPoint.y = startingPosition.y + startingVelocity.y * t + Physics.gravity.y / 2f * t * t;
