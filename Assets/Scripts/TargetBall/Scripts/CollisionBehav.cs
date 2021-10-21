@@ -21,19 +21,13 @@ public class CollisionBehav : MonoBehaviour, ICollision
 
     private void Start()
     {
-        _rb = transform.GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         _mr = GetComponent<MeshRenderer>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
     public bool onBall()
     {
 
-        StartCoroutine(Sequence());
-        return false;
-    }
-
-    public bool onPlayer()
-    {
         StartCoroutine(Sequence());
         return false;
     }
